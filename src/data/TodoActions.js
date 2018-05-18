@@ -21,6 +21,13 @@ const TodoActions = {
       type: TodoActionTypes.DELETE_TODO,
       id
     })
+  },
+
+  updateTodoDraft(text) {
+    TodoDispatcher.dispatch({
+      type: TodoActionTypes.UPDATE_TODO_DRAFT,
+      text
+    })
   }
 };
 

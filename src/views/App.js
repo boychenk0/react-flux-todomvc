@@ -24,6 +24,7 @@ function Main(props) {
 
   return (
     <section id="main">
+      <TodoDraft {...props}/>
       <ul id="todo-list">
         {[...props.todos.values()].reverse().map(todo => (
           <li key={todo.id}>
@@ -32,18 +33,31 @@ function Main(props) {
                 className="toggle"
                 type="checkbox"
                 checked={todo.complete}
-                onChange={() => {props.onToggleTodo(todo.id)}}
+                onChange={() => props.onToggleTodo(todo.id)}
               />
               <label>{todo.text}</label>
               <button
                 className="destroy"
-                onClick={() => {props.onDeleteTodo(todo.id)}}
+                onClick={() => props.onDeleteTodo(todo.id)}
               />
             </div>
           </li>
         ))}
       </ul>
     </section>
+  )
+}
+
+function TodoDraft(props){
+  return (
+    <input
+      id="new-todo"
+      placeholder="What needs to be done?"
+      autoFocus={true}
+      value={props.todoDraft.get('text')}
+      onChange={(e) => props.onUpdateTodoDraft(e.target.value)}
+      onKeyPress={(e) => e.key === 'Enter' ? props.onAddTodo(e.target.value) : false}
+    />
   )
 }
 

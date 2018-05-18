@@ -6,15 +6,15 @@ import Counter from './Counter'
 import Todo from "./Todo"
 
 class TodoStore extends ReduceStore {
-  constructor(){
+  constructor() {
     super(TodoDispatcher)
   }
 
-  getInitialState(){
+  getInitialState() {
     return Immutable.OrderedMap()
   }
 
-  reduce(state, action){
+  reduce(state, action) {
     switch(action.type) {
       case TodoActionTypes.ADD_TODO:
         //do not allow empty text
@@ -31,7 +31,7 @@ class TodoStore extends ReduceStore {
           todo => todo.set('complete', !todo.complete)
         );
       case TodoActionTypes.DELETE_TODO:
-        return state.remove(action.id)
+        return state.remove(action.id);
       default:
         return state;
     }
