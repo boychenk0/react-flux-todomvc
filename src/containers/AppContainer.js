@@ -15,7 +15,8 @@ function getState(){
     todos: TodoStore.getState(),
 
     //actions
-    onToggleTodo: TodoActions.toggleTodo
+    onToggleTodo: TodoActions.toggleTodo,
+    onDeleteTodo: TodoActions.deleteTodo
   }
 }
 

@@ -14,6 +14,13 @@ const TodoActions = {
       type: TodoActionTypes.TOGGLE_TODO,
       id
     })
+  },
+
+  deleteTodo(id) {
+    TodoDispatcher.dispatch({
+      type: TodoActionTypes.DELETE_TODO,
+      id
+    })
   }
 };
 

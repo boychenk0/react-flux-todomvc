@@ -37,7 +37,7 @@ function Main(props) {
               <label>{todo.text}</label>
               <button
                 className="destroy"
-                onClick={() => {}}
+                onClick={() => {props.onDeleteTodo(todo.id)}}
               />
             </div>
           </li>
