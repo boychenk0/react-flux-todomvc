@@ -32,7 +32,7 @@ function Main(props) {
                 className="toggle"
                 type="checkbox"
                 checked={todo.complete}
-                onChange={() => {}}
+                onChange={() => {props.onToggleTodo(todo.id)}}
               />
               <label>{todo.text}</label>
               <button

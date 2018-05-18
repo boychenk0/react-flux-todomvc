@@ -7,6 +7,13 @@ const TodoActions = {
       type: TodoActionTypes.ADD_TODO,
       text
     })
+  },
+
+  toggleTodo(id) {
+    TodoDispatcher.dispatch({
+      type: TodoActionTypes.TOGGLE_TODO,
+      id
+    })
   }
 };
 
