@@ -36,6 +36,9 @@ class TodoStore extends ReduceStore {
         return state.filter(
             todo => !todo.complete
         );
+      case TodoActionTypes.TOGGLE_ALL_TODOS:
+        const areAllCompleted = state.every(todo => todo.complete);
+        return state.map(todo => todo.set('complete', !areAllCompleted));
       default:
         return state;
     }

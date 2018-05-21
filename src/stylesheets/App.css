@@ -394,8 +394,8 @@ label[for='toggle-all'] {
   }
 
   #toggle-all {
-    top: -56px;
-    left: -15px;
+    top: -53px;
+    left: -12px;
     width: 65px;
     height: 41px;
     -webkit-transform: rotate(90deg);

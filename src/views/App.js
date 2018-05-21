@@ -32,6 +32,7 @@ function Main(props) {
 
   return (
     <section id="main">
+      <button id="toggle-all" onClick={props.onToggleAllTodos}/>
       <ul id="todo-list">
         {[...props.todos.values()].reverse().map(todo => (
           <li key={todo.id}>
