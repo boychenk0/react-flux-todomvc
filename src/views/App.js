@@ -15,6 +15,14 @@ function Header(props) {
   return (
     <header id="header">
       <h1>todos</h1>
+      <input
+        id="new-todo"
+        placeholder="What needs to be done?"
+        autoFocus={true}
+        value={props.todoDraft.get('text')}
+        onChange={(e) => props.onUpdateTodoDraft(e.target.value)}
+        onKeyPress={(e) => e.key === 'Enter' ? props.onAddTodo(e.target.value) : false}
+      />
     </header>
   )
 }
@@ -24,7 +32,6 @@ function Main(props) {
 
   return (
     <section id="main">
-      <TodoDraft {...props}/>
       <ul id="todo-list">
         {[...props.todos.values()].reverse().map(todo => (
           <li key={todo.id}>
@@ -48,19 +55,6 @@ function Main(props) {
   )
 }
 
-function TodoDraft(props){
-  return (
-    <input
-      id="new-todo"
-      placeholder="What needs to be done?"
-      autoFocus={true}
-      value={props.todoDraft.get('text')}
-      onChange={(e) => props.onUpdateTodoDraft(e.target.value)}
-      onKeyPress={(e) => e.key === 'Enter' ? props.onAddTodo(e.target.value) : false}
-    />
-  )
-}
-
 function Footer(props) {
   if (props.todos.size === 0) { return null }
 
@@ -74,6 +68,7 @@ function Footer(props) {
         </strong>
         {phrase}
       </span>
+      <button id="clear-completed" onClick={props.onDeleteCompletedTodos}>Clear completed</button>
     </footer>
   )
 }

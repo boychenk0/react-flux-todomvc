@@ -28,6 +28,12 @@ const TodoActions = {
       type: TodoActionTypes.UPDATE_TODO_DRAFT,
       text
     })
+  },
+
+  deleteCompletedTodos() {
+    TodoDispatcher.dispatch({
+      type: TodoActionTypes.DELETE_COMPLETED_TODOS,
+    })
   }
 };
 
