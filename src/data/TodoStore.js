@@ -16,6 +16,7 @@ class TodoStore extends ReduceStore {
 
   reduce(state, action) {
     switch(action.type) {
+
       case TodoActionTypes.ADD_TODO:
         //do not allow empty text
         if (!action.text){ return state; }
@@ -25,20 +26,28 @@ class TodoStore extends ReduceStore {
           text: action.text,
           complete: false
         }));
+
       case TodoActionTypes.TOGGLE_TODO:
         return state.update(
           action.id,
           todo => todo.set('complete', !todo.complete)
         );
+
       case TodoActionTypes.DELETE_TODO:
         return state.remove(action.id);
+
       case TodoActionTypes.DELETE_COMPLETED_TODOS:
         return state.filter(
             todo => !todo.complete
         );
+
       case TodoActionTypes.TOGGLE_ALL_TODOS:
         const areAllCompleted = state.every(todo => todo.complete);
         return state.map(todo => todo.set('complete', !areAllCompleted));
+
+      case TodoActionTypes.EDIT_TODO:
+        return state.setIn([action.id, 'text'], action.text);
+
       default:
         return state;
     }

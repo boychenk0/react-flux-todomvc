@@ -40,6 +40,28 @@ const TodoActions = {
     TodoDispatcher.dispatch({
       type: TodoActionTypes.TOGGLE_ALL_TODOS,
     })
+  },
+
+  startEditTodo(id) {
+    TodoDispatcher.dispatch({
+      type: TodoActionTypes.START_EDIT_TODO,
+      id
+    })
+  },
+
+  stopEditTodo(id) {
+    TodoDispatcher.dispatch({
+      type: TodoActionTypes.STOP_EDIT_TODO,
+      id
+    })
+  },
+
+  editTodo(id, text) {
+    TodoDispatcher.dispatch({
+      type: TodoActionTypes.EDIT_TODO,
+      id,
+      text
+    })
   }
 };
 

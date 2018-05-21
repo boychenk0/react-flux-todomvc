@@ -1,8 +1,9 @@
 import { ReduceStore } from 'flux/utils'
 import TodoDispatcher from "./TodoDispatcher"
-import TodoActionsTypes from "./TodoActionTypes"
+import TodoActionTypes from './TodoActionTypes'
 
-class TodoDraftStore extends ReduceStore {
+
+class TodoEditStore extends ReduceStore {
   constructor() {
     super(TodoDispatcher)
   }
@@ -14,11 +15,11 @@ class TodoDraftStore extends ReduceStore {
   reduce(state, action) {
     switch(action.type) {
 
-      case TodoActionsTypes.ADD_TODO:
-        return '';
+      case TodoActionTypes.START_EDIT_TODO:
+        return action.id;
 
-      case TodoActionsTypes.UPDATE_TODO_DRAFT:
-        return action.text;
+      case TodoActionTypes.STOP_EDIT_TODO:
+        return '';
 
       default:
         return state;
@@ -26,4 +27,4 @@ class TodoDraftStore extends ReduceStore {
   }
 }
 
-export default new TodoDraftStore()
+export default new TodoEditStore()

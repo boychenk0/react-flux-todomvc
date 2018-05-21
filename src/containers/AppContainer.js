@@ -3,11 +3,13 @@ import AppView from '../views/App'
 import TodoStore from '../data/TodoStore'
 import TodoActions from "../data/TodoActions";
 import TodoDraftStore from "../data/TodoDraftStore";
+import TodoEditStore from "../data/TodoEditStore";
 
 function getStores(){
   return [
     TodoStore,
-    TodoDraftStore
+    TodoDraftStore,
+    TodoEditStore
   ]
 }
 
@@ -16,6 +18,7 @@ function getState(){
     //data
     todos: TodoStore.getState(),
     todoDraft: TodoDraftStore.getState(),
+    editing: TodoEditStore.getState(),
 
     //actions
     onAddTodo: TodoActions.addTodo,
@@ -23,7 +26,10 @@ function getState(){
     onDeleteTodo: TodoActions.deleteTodo,
     onUpdateTodoDraft: TodoActions.updateTodoDraft,
     onDeleteCompletedTodos: TodoActions.deleteCompletedTodos,
-    onToggleAllTodos: TodoActions.toggleAllTodos
+    onToggleAllTodos: TodoActions.toggleAllTodos,
+    onStartEditTodo: TodoActions.startEditTodo,
+    onStopEditTodo: TodoActions.stopEditTodo,
+    onEditTodo: TodoActions.editTodo
   }
 }
 
