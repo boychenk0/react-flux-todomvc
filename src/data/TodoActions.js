@@ -62,6 +62,13 @@ const TodoActions = {
       id,
       text
     })
+  },
+
+  filterTodos(filter) {
+    TodoDispatcher.dispatch({
+      type: TodoActionTypes.FILTER_TODOS,
+      filter
+    })
   }
 };
 

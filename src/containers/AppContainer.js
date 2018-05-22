@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 import TodoActions from "../data/TodoActions";
-import AppView from '../views/App';
+import Layout from '../views/Layout';
 //stores
 import TodoStore from '../data/TodoStore';
 import TodoDraftStore from "../data/TodoDraftStore";
 import TodoEditStore from "../data/TodoEditStore";
+import TodoFilter from '../data/TodoFilter';
 
 class TodoContainer extends Component {
 
@@ -13,7 +14,8 @@ class TodoContainer extends Component {
     return [
       TodoStore,
       TodoDraftStore,
-      TodoEditStore
+      TodoEditStore,
+      TodoFilter
     ];
   }
 
@@ -23,6 +25,7 @@ class TodoContainer extends Component {
       todos: TodoStore.getState(),
       todoDraft: TodoDraftStore.getState(),
       editing: TodoEditStore.getState(),
+      filter: TodoFilter.getState(),
 
       //actions
       onAddTodo: TodoActions.addTodo,
@@ -33,12 +36,15 @@ class TodoContainer extends Component {
       onToggleAllTodos: TodoActions.toggleAllTodos,
       onStartEditTodo: TodoActions.startEditTodo,
       onStopEditTodo: TodoActions.stopEditTodo,
-      onEditTodo: TodoActions.editTodo
+      onEditTodo: TodoActions.editTodo,
+      onFilterTodos: TodoActions.filterTodos
     }
   }
 
   render() {
-    return <AppView {...this.state}/>
+    return(
+      <Layout {...this.state}/>
+    )
   }
 }
 

@@ -339,13 +339,14 @@ label[for='toggle-all'] {
   display: inline;
 }
 
-#filters li a {
+#filters li span {
   color: #83756f;
   margin: 2px;
   text-decoration: none;
+  cursor: pointer;
 }
 
-#filters li a.selected {
+#filters li span.selected {
   font-weight: bold;
 }
 

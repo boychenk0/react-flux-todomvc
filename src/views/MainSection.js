@@ -6,11 +6,22 @@ class MainSection extends Component {
     //not render if no items
     if (this.props.todos.size === 0) { return null }
 
+    const todosList = [...this.props.todos.filter(
+      todo => {
+        switch (this.props.filter) {
+          case 'active':
+            return !todo.complete;
+          case 'completed':
+            return todo.complete;
+          default:
+            return true;
+        }
+      }).values()].reverse();
     return (
       <section id="main">
         <button id="toggle-all" onClick={this.props.onToggleAllTodos}/>
         <ul id="todo-list">
-          {[...this.props.todos.values()].reverse().map(todo => (
+          {todosList.map(todo => (
             <TodoItem
               key={todo.id}
               editing={this.props.editing}

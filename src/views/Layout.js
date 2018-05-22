@@ -4,7 +4,7 @@ import Header from './Header';
 import MainSection from './MainSection';
 import Footer from './Footer';
 
-class App extends Component {
+class Layout extends Component {
 
   render() {
     return (
@@ -17,4 +17,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Layout;

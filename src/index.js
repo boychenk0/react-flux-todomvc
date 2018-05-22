@@ -1,8 +1,8 @@
-import React from 'react';
+import React  from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
-import TodoActions from './data/TodoActions'
+import TodoActions from './data/TodoActions';
 
 ReactDOM.render(<AppContainer />, document.getElementById('todoapp'));
 registerServiceWorker();
